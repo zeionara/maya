@@ -1,5 +1,9 @@
 # maya
 
+<p align='center'>
+    <img src='assets/logo.png'/>
+</p>
+
 **M**ultimedia **a**dapter for **y**outube **a**pi which allows to download content from youtube.
 
 ## Installation
@@ -33,5 +37,5 @@ python -m maya pull https://www.youtube.com/playlist?list=PLyLY-SxMUzOgbhkUkru4e
 If you are not downloading age-restricted videos, then option `-a` (authentication) can be omitted:
 
 ```sh
-python -m maya pull https://www.youtube.com/playlist?list=PLyLY-SxMUzOgbhkUkru4esCxNUl3-DEtj -o assets/314 -a -u
+python -m maya pull https://www.youtube.com/playlist?list=PLyLY-SxMUzOgbhkUkru4esCxNUl3-DEtj -o assets/314
 ```

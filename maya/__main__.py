@@ -1,4 +1,4 @@
-from os import makedirs
+from os import makedirs, path
 from tqdm import tqdm
 
 from pytube.contrib.playlist import Playlist
@@ -19,24 +19,26 @@ def main():
 @option('--bit-rate', '-b', type = int, default = 160)
 def pull(playlist: str, output_path: str, authenticate: bool, audio: bool, bit_rate: int):
     playlist = Playlist(playlist)
-    # youtube = YouTube('https://www.youtube.com/watch?v=FqKAlH-4F70')
-    # yt = YouTube('https://www.youtube.com/watch?v=FqKAlH-4F70', use_oauth = authenticate, allow_oauth_cache = True)
-    # playlist = ['https://www.youtube.com/watch?v=FqKAlH-4F70']
 
-    abr = f'{bit_rate}kbps' if audio else None
+    abr = f'{bit_rate}kbps' if audio else None  # abr = audio bit rate
 
     for url in tqdm(playlist, desc = 'Downloading media from playlist'):
         yt = YouTube(url, use_oauth = authenticate, allow_oauth_cache = True)
 
+        filename = f'{yt.title}.mp{"3" if audio else "4"}'.replace('/', '__slash__')
+        filepath = path.join(output_path, filename)
+
+        if path.isfile(filepath):
+            continue
+
         makedirs(output_path, exist_ok = True)
 
-        # print(yt.title)
         if audio:
             (
                 yt.streams
                 .filter(only_audio = True, abr = abr)
                 .first()
-                .download(output_path = output_path, filename = f'{yt.title}.mp3')
+                .download(output_path = output_path, filename = filename)
             )
         else:
             (
@@ -45,10 +47,8 @@ def pull(playlist: str, output_path: str, authenticate: bool, audio: bool, bit_r
                 .order_by('resolution')
                 .desc()
                 .first()
-                .download(output_path = output_path, filename = f'{yt.title}.mp4')
+                .download(output_path = output_path, filename = filename)
             )
-
-    # print(len(playlist))
 
 
 if __name__ == '__main__':
