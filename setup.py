@@ -4,7 +4,7 @@ with open('README.md', 'r', encoding = 'utf-8') as readme:
     long_description = readme.read()
 
 setup(
-    name = 'ma-ya',
+    name = 'mayonnaise',
     version = '0.1.0',
     description = 'Youtube cli interface for downloading media',
     url = 'https://github.com/zeionara/maya',
@@ -14,7 +14,7 @@ setup(
         'maya'
     ],
     install_requires = [
-        'git+https://github.com/duvu/pytube',
+        'pytube @ git+https://github.com/duvu/pytube',
         'click',
         'tqdm'
     ],

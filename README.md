@@ -1,7 +1,7 @@
 # maya
 
 <p align='center'>
-    <img src='assets/logo.png'/>
+    <img src='https://raw.githubusercontent.com/zeionara/maya/master/assets/logo.png'/>
 </p>
 
 **M**ultimedia **a**dapter for **y**outube **a**pi which allows to download content from youtube.
@@ -11,7 +11,7 @@
 Execute the following command to install using pip:
 
 ```sh
-pip install ma-ya
+pip install mayonnaise
 ```
 
 To create conda environment use the `environment.yml` file:
