@@ -14,8 +14,9 @@ setup(
         'maya'
     ],
     install_requires = [
+        'git+https://github.com/duvu/pytube',
         'click',
-        'git+https://github.com/duvu/pytube'
+        'tqdm'
     ],
     classifiers = [
         'Programming Language :: Python :: 3.10'
